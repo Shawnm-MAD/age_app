@@ -101,48 +101,56 @@ home: const MyHomePage(),
 );
 }
 }
+// Home page with buttons to increment and decrement
 class MyHomePage extends StatelessWidget {
-const MyHomePage({super.key});
-@override
-Widget build(BuildContext context) {
-return Scaffold(
-appBar: AppBar(
-title: const Text('Flutter Demo Home Page'),
-),
-body: Center(
-child: Column(
-mainAxisAlignment: MainAxisAlignment.center,
-children: [
-const Text('You have pushed the button this many times:'),
-// Consumer looks for an ancestor Provider widget
-// and retrieves its model (Counter, in this case).
-// Then it uses that model to build widgets, and will trigger
-// rebuilds if the model is updated.
-Consumer<Counter>(
-builder: (context, counter, child) => Text(
-'${counter.value}',
-style: Theme.of(context).textTheme.headlineMedium,
-),
-),
-const SizedBox(height: 20),
-ElevatedButton(
-  onPressed: () {
-    var counter = context.read<Counter>();
-    counter.increment();
-  },
-  child: const Text('Increment'),
-),
-const SizedBox(height: 20),
-ElevatedButton(
-  onPressed: () {
-    var counter = context.read<Counter>();
-    counter.decrement();
-  },
-  child: const Text ('Decrement'),
- ),
-],
-),
-),
-);
-}
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Demo Home Page'),
+      ),
+      body: Consumer<Counter>(
+        builder: (context, counter, child) {
+          return Container(
+            color: counter.milestoneColor, // Background color based on counter
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('You have pushed the button this many times:'),
+                  Text(
+                    '${counter.value}',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    counter.milestoneMessage, // Milestone message
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      var counter = context.read<Counter>();
+                      counter.increment();
+                    },
+                    child: const Text('Increment'),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      var counter = context.read<Counter>();
+                      counter.decrement();
+                    },
+                    child: const Text('Decrement'),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 }

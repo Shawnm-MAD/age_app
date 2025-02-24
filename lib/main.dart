@@ -86,6 +86,24 @@ Color get milestoneColor {
       return Colors.limeAccent;
     }
 }
+
+// Set the value using the slider
+void setValue(double newValue) {
+  value = newValue.toInt();
+  notifyListeners();
+}
+
+// Logic for color change based on slider value
+Color get sliderColor {
+  // Logic for slider color change
+  if (value <= 33) {
+    return Colors.green; // Green for 0-33
+      } else if (value <= 67){
+    return Colors.yellow; // Yellow for 34-67
+      } else {
+    return Colors.red; // Red for 68-99
+    }
+  }
 }
 class MyApp extends StatelessWidget {
 const MyApp({super.key});

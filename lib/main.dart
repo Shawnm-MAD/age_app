@@ -73,17 +73,17 @@ String get milestoneMessage {
 // Background color change based on the mileston
 Color get milestoneColor {
   if (value <= 12) {
-      return Colors.lightBlue;
+      return Colors.blue.shade200; // Childhood
     } else if (value <= 19) { //
-      return Colors.lightGreen;
+      return Colors.green.shade200; // Teenage
     } else if (value <= 30) {
-      return Colors.yellow.shade200;
+      return Colors.yellow.shade300; // Young Adult
     } else if (value <= 60) {
-      return Colors.orange;
-    } else if (value <= 65) {
-      return Colors.grey;
+      return Colors.orange.shade300; // Adult
+    } else if (value <= 65) {    // Senior
+      return Colors.grey.shade300;
     } else {
-      return Colors.limeAccent;
+      return Colors.limeAccent; // Retiree
     }
 }
 

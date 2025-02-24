@@ -145,6 +145,18 @@ class MyHomePage extends StatelessWidget {
                     },
                     child: const Text('Decrement'),
                   ),
+                  const SizedBox(height: 20),
+                  //Slider to change the value
+                  Slider(
+                    value: counter.value.toDouble(),
+                    min: 0,
+                    max: 100,
+                    divisions: 100,
+                    label: '${counter.value}',
+                    onChanged: (newValue) {
+                      counter.setValue(newValue); // Set the counter value based on slider
+                    },
+                  ),
                 ],
               ),
             ),

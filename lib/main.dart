@@ -52,6 +52,40 @@ void decrement() {
   value -= 1;
   notifyListeners();
 }
+
+// Milestone logic based on current counter value
+String get milestoneMessage {
+  if (value <= 12) {
+      return "You're a child!";
+    } else if (value <= 19) {
+      return "Teenager time!";
+    } else if (value <= 30) {
+      return "You're a young adult!";
+    } else if (value <= 60) {
+      return "You're an adult now!";
+    } else if (value <= 65){
+      return "Time to retire";
+    } else {
+      return "Golden years!";
+    }
+}
+
+// Background color change based on the mileston
+Color get milestoneColor {
+  if (value <= 12) {
+      return Colors.lightBlue;
+    } else if (value <= 19) { //
+      return Colors.lightGreen;
+    } else if (value <= 30) {
+      return Colors.yellow.shade200;
+    } else if (value <= 60) {
+      return Colors.orange;
+    } else if (value <= 65) {
+      return Colors.grey;
+    } else {
+      return Colors.limeAccent;
+    }
+}
 }
 class MyApp extends StatelessWidget {
 const MyApp({super.key});

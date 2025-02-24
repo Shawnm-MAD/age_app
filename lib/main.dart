@@ -48,6 +48,10 @@ void increment() {
 value += 1;
 notifyListeners();
 }
+void decrement() {
+  value -= 1;
+  notifyListeners();
+}
 }
 class MyApp extends StatelessWidget {
 const MyApp({super.key});
